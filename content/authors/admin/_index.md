@@ -31,7 +31,7 @@ education:
   courses:
     - course: PhD in Cognitive Psychology
       institution: University of Pittsburgh
-      year: *anticipated June 2024* 
+      year: anticipated June 2024 
     - course: M.S. in Cognitive Psychology
       institution: University of Pittsburgh
       year: 2021
