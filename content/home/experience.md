@@ -34,10 +34,10 @@ experience:
   - title: Political Data Fellow
     company: Bluebonnet Data
     company_url: 'https://bluebonnetdata.org/'
-    company_logo: org-x
+    company_logo: bluebonnet
     location: remote
-    date_start: '2016-01-01'
-    date_end: '2020-12-31'
+    date_start: '2021-02-01'
+    date_end: '2021-06-01'
     description: Provided data support and consulting for a mayoral campaign in St. Petersburg, Florida.
     
   - title: Research Associate
