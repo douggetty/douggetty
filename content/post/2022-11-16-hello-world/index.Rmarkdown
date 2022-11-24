@@ -1,0 +1,44 @@
+---
+title: Hello world!
+author: R package build
+date: '2022-11-16'
+slug: hello-world
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-11-16T15:48:28-05:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+output:
+  html_document:
+    keep_md: yes
+projects: []
+---
+
+# New text!
+
+```{r}
+
+summary(Orange)
+```
+
+## Text for a new subsection
+
+This is a very important subsection.
+
+```{r}
+library(ggplot2)
+oplot <- ggplot(Orange, aes(x = age, 
+                   y = circumference, 
+                   colour = Tree)) +
+  geom_point() +
+  geom_line() +
+  guides(colour = "none") +
+  theme_bw()
+oplot
+```

@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: November 23, 2022 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.16f785cdb553c8c4431db6775122af35.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css" integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.e5d7adca760216d3b7e28ea434e81f6f.css" />
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Alice Bighetti 吳恩達" />
+
+
+
+
+
+  
+
+<meta name="description" content="In my statistics class this Spring, we had a discussion about scientific reproducibility and practices that can lead to p-hacking. Two points came up in the class discussion that I have been interested to test on a real dataset." />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://example.com/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/" />
+<link rel="canonical" href="https://example.com/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#1565c0" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary" />
+
+  <meta property="twitter:site" content="@wowchemy" />
+  <meta property="twitter:creator" content="@wowchemy" />
+<meta property="twitter:image" content="https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+<meta property="og:site_name" content="Academic" />
+<meta property="og:url" content="https://example.com/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/" />
+<meta property="og:title" content="Protecting against sketchy research practices: p-values, effect sizes, and power analyses | Academic" />
+<meta property="og:description" content="In my statistics class this Spring, we had a discussion about scientific reproducibility and practices that can lead to p-hacking. Two points came up in the class discussion that I have been interested to test on a real dataset." /><meta property="og:image" content="https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2019-06-21T00:00:00&#43;00:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2022-11-23T19:05:03-05:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.com/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/"
+  },
+  "headline": "Protecting against sketchy research practices: p-values, effect sizes, and power analyses",
+  
+  "datePublished": "2019-06-21T00:00:00Z",
+  "dateModified": "2022-11-23T19:05:03-05:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Alice Bighetti 吳恩達"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Academic",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "In my statistics class this Spring, we had a discussion about scientific reproducibility and practices that can lead to p-hacking. Two points came up in the class discussion that I have been interested to test on a real dataset."
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>Protecting against sketchy research practices: p-values, effect sizes, and power analyses | Academic</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="9899a4901f8c4a9a32cefcd2caac6a8e" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.ec9d49ca50e4b80bdb08f0417a28ed84.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Academic</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Academic</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#talks"><span>Talks</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#featured"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+            
+            <li class="nav-item d-none d-lg-inline-flex">
+              <a class="nav-link" href="https://twitter.com/GeorgeCushen" data-toggle="tooltip" data-placement="bottom" title="Follow me on Twitter" target="_blank" rel="noopener" aria-label="Follow me on Twitter">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+          
+        
+
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Protecting against sketchy research practices: p-values, effect sizes, and power analyses</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Nov 23, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    12 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>In my statistics class this Spring, we had a discussion about scientific reproducibility and practices that can lead to p-hacking. Two points came up in the class discussion that I have been interested to test on a real dataset. The first point is that p-values for a model can fluctuate quite dramatically with the addition of each new piece of data. Without an a priori defined sample size, this can lead researchers to collect a set of data, run an analysis, and then collect more data if the p-value is not significant. In the biz, this practice is widely considered p-hacking. The second point is that, in the absence of prior literature on an effect, researchers can collect data from a small pilot sample and then use the effect size from that sample as an estimate for the true effect size.  With that information, the researcher can conduct a power analysis to estimate the required sample size to detect a significant effect. Having a good estimate of the effect size allows researchers to conduct a power analysis and define a sample size before data collection and (ideally) protects against one type of p-hacking.</p>
+<p>These points generated some questions for me: 1) In my own wild caught data, how much will the p-value behave as sample size increases? If I analyzed my data with every new subject, is it possible that the p-value could alternate back and forth across the .05 threshold? 2) If the p-value is variable, could the effect size also be variable? And if the effect size is highly variable, using the effect size from a pilot sample might not be a very useful estimate for the true effect size.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">lme4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">lmerTest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">path</span> <span class="o">&lt;-</span> <span class="s">&#34;content/post/2022-11-23-protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/data&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#34;data_clean.csv&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">ItemID</span> <span class="o">=</span> <span class="nf">as_factor</span><span class="p">(</span><span class="n">ItemID</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">Condition</span> <span class="o">=</span> <span class="nf">as_factor</span><span class="p">(</span><span class="n">Condition</span><span class="p">))</span>
+</span></span></code></pre></div><p>To answer the both questions, I wrote a function in R that runs a regression model on progressively larger and larger datasets. It begins with participants 1 through 8, then adds participants one at a time until the full dataset participants is included. The function saves the p-value and the effect size for each sample size.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Function to save p-values and effect sizes </span>
+</span></span><span class="line"><span class="cl"><span class="n">model.info.extractor</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">filter.low</span><span class="p">,</span> <span class="n">filter.high</span><span class="p">,</span> <span class="n">model.formula</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">dataset</span><span class="o">$</span><span class="n">SubjectID</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Subs</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">filter</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">logRT</span> <span class="o">&gt;</span> <span class="nf">log</span><span class="p">(</span><span class="n">filter.low</span><span class="p">),</span> <span class="n">logRT</span> <span class="o">&lt;</span> <span class="nf">log</span><span class="p">(</span><span class="n">filter.high</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Initialize output</span>
+</span></span><span class="line"><span class="cl">  <span class="n">output</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">Subs</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&#34;integer&#34;</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">Subs</span><span class="p">)),</span> 
+</span></span><span class="line"><span class="cl">                       <span class="n">p.val</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&#34;double&#34;</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">Subs</span><span class="p">)),</span> 
+</span></span><span class="line"><span class="cl">                       <span class="n">effect</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&#34;double&#34;</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">Subs</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">Subs</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">temp.data</span> <span class="o">&lt;-</span> <span class="n">data</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">filter</span><span class="p">(</span><span class="n">SubjectID</span> <span class="o">&lt;=</span> <span class="n">Subs[i]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nf">contrasts</span><span class="p">(</span><span class="n">temp.data</span><span class="o">$</span><span class="n">Condition</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">-1</span><span class="o">/</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">model.formula</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">temp.data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">Subs[i]</span> <span class="o">&lt;-</span> <span class="n">Subs[i]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">p.val[i]</span> <span class="o">&lt;-</span> <span class="nf">coef</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">model</span><span class="p">))</span><span class="n">[</span><span class="p">,</span><span class="s">&#34;Pr(&gt;|t|)&#34;</span><span class="n">][</span><span class="s">&#34;Condition1&#34;</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">effect[i]</span> <span class="o">&lt;-</span> <span class="nf">coef</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">model</span><span class="p">))</span><span class="n">[</span><span class="p">,</span><span class="s">&#34;Estimate&#34;</span><span class="n">][</span><span class="s">&#34;Condition1&#34;</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The first argument of the function is the dataset we want to extract p-values and effect sizes from. My data is made up of reaction times, and many of them are unrealistically short or long. So, I added arguments to the function that allow me to specify how I want to filter the reaction times. I also added an argument to specify the formula of the model I would like to test.</p>
+<h2 id="just-how-variable-are-p-values">Just how variable are p-values?</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Change</span> <span class="o">&lt;-</span> <span class="nf">model.info.extractor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="m">150</span><span class="p">,</span> <span class="m">2000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                      <span class="n">logRT</span> <span class="o">~</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span> <span class="o">+</span> <span class="n">Duration</span>
+</span></span><span class="line"><span class="cl">                                      <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">+</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span><span class="o">|</span><span class="n">SubjectID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                      <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ItemID</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">write_csv</span><span class="p">(</span><span class="n">Change</span><span class="p">,</span> <span class="s">&#34;Change.csv&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>The function takes quite a while to run, so I ran it once and then saved the results in .csv to save myself 10 minutes every time I wanted to run this document. The output of the function is read back in below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Change</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#34;Change.csv&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">Change</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">##    sample      p.val      effect
+</span></span><span class="line"><span class="cl">## 1       8 0.64676225 0.023956551
+</span></span><span class="line"><span class="cl">## 2       9 0.66407860 0.022449371
+</span></span><span class="line"><span class="cl">## 3      10 0.53701072 0.029465728
+</span></span><span class="line"><span class="cl">## 4      11 0.64010673 0.021090871
+</span></span><span class="line"><span class="cl">## 5      12 0.62431914 0.020641288
+</span></span><span class="line"><span class="cl">## 6      13 0.71429794 0.014962941
+</span></span><span class="line"><span class="cl">## 7      14 0.78787040 0.010366001
+</span></span><span class="line"><span class="cl">## 8      15 0.70523232 0.013724233
+</span></span><span class="line"><span class="cl">## 9      16 0.75750242 0.010822900
+</span></span><span class="line"><span class="cl">## 10     17 0.83511818 0.007125767
+</span></span><span class="line"><span class="cl">## 11     18 0.81899813 0.007458847
+</span></span><span class="line"><span class="cl">## 12     19 0.53177486 0.020446333
+</span></span><span class="line"><span class="cl">## 13     20 0.39276307 0.027265608
+</span></span><span class="line"><span class="cl">## 14     21 0.41979771 0.025243074
+</span></span><span class="line"><span class="cl">## 15     22 0.35428068 0.028851680
+</span></span><span class="line"><span class="cl">## 16     23 0.25324610 0.034702771
+</span></span><span class="line"><span class="cl">## 17     24 0.28520421 0.031424818
+</span></span><span class="line"><span class="cl">## 18     25 0.25063186 0.032500367
+</span></span><span class="line"><span class="cl">## 19     26 0.30061596 0.028820287
+</span></span><span class="line"><span class="cl">## 20     27 0.32544118 0.026168487
+</span></span><span class="line"><span class="cl">## 21     28 0.37970644 0.022739126
+</span></span><span class="line"><span class="cl">## 22     29 0.20218179 0.032456029
+</span></span><span class="line"><span class="cl">## 23     30 0.16383456 0.034340176
+</span></span><span class="line"><span class="cl">## 24     31 0.24343635 0.028443160
+</span></span><span class="line"><span class="cl">## 25     32 0.22899481 0.029287060
+</span></span><span class="line"><span class="cl">## 26     33 0.17255466 0.032524906
+</span></span><span class="line"><span class="cl">## 27     34 0.12321259 0.036312403
+</span></span><span class="line"><span class="cl">## 28     35 0.12617932 0.035316236
+</span></span><span class="line"><span class="cl">## 29     36 0.13393238 0.033615814
+</span></span><span class="line"><span class="cl">## 30     37 0.08156411 0.039386283
+</span></span><span class="line"><span class="cl">## 31     38 0.12331565 0.034519362
+</span></span><span class="line"><span class="cl">## 32     39 0.13420377 0.032474447
+</span></span><span class="line"><span class="cl">## 33     40 0.12076917 0.032975589
+</span></span><span class="line"><span class="cl">## 34     41 0.18907464 0.028143834
+</span></span><span class="line"><span class="cl">## 35     42 0.12638608 0.032307440
+</span></span><span class="line"><span class="cl">## 36     43 0.13275847 0.031397508
+</span></span><span class="line"><span class="cl">## 37     44 0.10690998 0.033406869
+</span></span><span class="line"><span class="cl">## 38     45 0.08363454 0.035285994
+</span></span><span class="line"><span class="cl">## 39     46 0.07602317 0.035625700
+</span></span><span class="line"><span class="cl">## 40     47 0.09913246 0.032287522
+</span></span><span class="line"><span class="cl">## 41     48 0.08451991 0.033115017
+</span></span><span class="line"><span class="cl">## 42     49 0.08081721 0.033569783
+</span></span><span class="line"><span class="cl">## 43     50 0.05301991 0.036834747
+</span></span><span class="line"><span class="cl">## 44     51 0.04962206 0.037092784
+</span></span><span class="line"><span class="cl">## 45     52 0.05852353 0.035143302
+</span></span><span class="line"><span class="cl">## 46     53 0.05572218 0.035525510
+</span></span><span class="line"><span class="cl">## 47     54 0.04824258 0.036146644
+</span></span><span class="line"><span class="cl">## 48     55 0.06670433 0.033332983
+</span></span><span class="line"><span class="cl">## 49     56 0.09085026 0.030340820
+</span></span><span class="line"><span class="cl">## 50     57 0.16460932 0.024950534
+</span></span><span class="line"><span class="cl">## 51     58 0.10483742 0.028731731
+</span></span><span class="line"><span class="cl">## 52     59 0.11067395 0.027995704
+</span></span><span class="line"><span class="cl">## 53     60 0.09383258 0.029044598
+</span></span><span class="line"><span class="cl">## 54     61 0.12589841 0.026536518
+</span></span><span class="line"><span class="cl">## 55     62 0.13250701 0.025856093
+</span></span><span class="line"><span class="cl">## 56     63 0.10794631 0.027289401
+</span></span><span class="line"><span class="cl">## 57     64 0.09677430 0.028000392
+</span></span><span class="line"><span class="cl">## 58     65 0.06466498 0.030765681
+</span></span><span class="line"><span class="cl">## 59     66 0.08349184 0.028497436
+</span></span></code></pre></div><p>After running the function above, I used ggplot to graph the p-values in order to answer my first question about how the p-value behaves over time.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">Change</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p.val</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="m">.05</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;red&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Cumulative Participants&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;p-value&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-5-1_huecf6fe17f6e080dea4a709423facf442_36358_1f3143ed53b0024c57fc95a6a94ce9f9.webp 400w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-5-1_huecf6fe17f6e080dea4a709423facf442_36358_fd3b4551ba57b6f8715e6d970254a06c.webp 760w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-5-1_huecf6fe17f6e080dea4a709423facf442_36358_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-5-1_huecf6fe17f6e080dea4a709423facf442_36358_1f3143ed53b0024c57fc95a6a94ce9f9.webp"
+               width="672"
+               height="480"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+<!-- --></p>
+<p>For the first 30 or so participants, the p-value fluctates a lot with each new participant but generally seems to decrease. After that, it looks like there is less fluctuation and no certain trend in one direction or another. Between participants 50 through 55, the p-value momentarily dips below the .05 threshold and, for a brief moment, I had sweet, sweet scientific glory in my grasp. It&rsquo;s easy to imagine that if I were collecting data without a pre-defined target sample size, I might have just stopped here and sent my paper off to Nature. Unfortunately for my CV, this did not happen :(</p>
+<p>##Is the effect size from a small pilot sample a good estimate for the true effect size?</p>
+<p>Given the variability of p-values as the sample size grows, let&rsquo;s see if the size of the effect is similarly variable over the course of a study. As mentioned earlier, it is common practice to use the effect from a small pilot sample to estimate a sample size using a power analysis. But if effect sizes are really variable, a power analysis might not yield a reliable sample size from a small sample.</p>
+<p>On one hand, if we underestimate the true effect, a power analysis would lead us to collecting a larger sample than necessary. While this is not necessarily bad, it can cause practical problems for projects that are costly or time-intensive. Alternatively, if we overestimate the true effect, a power analysis would lead us to collect a smaller sample than necessary. This would lead researchers not to detect effects when they actually do exist, which is definitely not good.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">Change</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">effect</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="n">Change</span><span class="o">$</span><span class="n">effect[1]</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Cumulative Participants&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Effect of Condition&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-6-1_hu23c103ec10e6dc6298d5ae84ca7042ca_42465_9ef66820ebfc1504db59c2c7f80e0ff0.webp 400w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-6-1_hu23c103ec10e6dc6298d5ae84ca7042ca_42465_d226c8f3976b09f4655d611ad43897fa.webp 760w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-6-1_hu23c103ec10e6dc6298d5ae84ca7042ca_42465_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-6-1_hu23c103ec10e6dc6298d5ae84ca7042ca_42465_9ef66820ebfc1504db59c2c7f80e0ff0.webp"
+               width="672"
+               height="480"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+<!-- --></p>
+<p>The blue line here represents the effect of 0.0239566 for subjects 1-8, which is the value that I would have used to estimate the true effect size had I done a power analysis. Just from inspecting the graph, it seems that the effect behaves similarly to the p-value in that it is volatile at first and then stabilizes. This makes sense given that the p-value is derived in part from the effect. The biggest difference from p-value variability is that it seems harder to argue that there is a clear directional trend.</p>
+<p>Notably, the effect size of 0.0239566 for subjects 1-8 is not very far off from the effect size of 0.0284974 for the whole sample of 66 subjects. In my case, I would have been lucky to use the effect for subjects 1-8. But the volatility of the effect size early on seems generally problematic for the strategy of using effect sizes from small samples as estimates of the true effect size.</p>
+<p>Presumably the order of my participants was random, so the early effect size volatility should be true no matter the order of the subjects. We can test this by randomly drawing a large number of hypothetical pilot participant groups from the dataset and seeing how often the effect is close to the one we observed above.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">effect.size.extractor</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">sims</span><span class="p">,</span> <span class="n">sample.size</span><span class="p">,</span> <span class="n">model.formula</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="n">n</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">dataset</span><span class="o">$</span><span class="n">SubjectID</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># Initialize output</span>
+</span></span><span class="line"><span class="cl">  <span class="n">output</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">SampleNum</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&#34;integer&#34;</span><span class="p">,</span> <span class="n">sims</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                       <span class="n">p.val</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&#34;double&#34;</span><span class="p">,</span> <span class="n">sims</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                       <span class="n">effect</span> <span class="o">=</span> <span class="nf">vector</span><span class="p">(</span><span class="s">&#34;double&#34;</span><span class="p">,</span> <span class="n">sims</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">sims</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#Random Subset of Subjects</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data.filt</span> <span class="o">&lt;-</span> <span class="n">dataset</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">select</span><span class="p">(</span><span class="n">SubjectID</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">distinct</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">#assign random number to each subject</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">mutate</span><span class="p">(</span><span class="n">RandSub</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="bp">F</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">right_join</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#34;SubjectID&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">#keep only random subjects 1-8</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">filter</span><span class="p">(</span><span class="n">RandSub</span> <span class="o">&lt;=</span> <span class="n">sample.size</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">#apply desired filters</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">filter</span><span class="p">(</span><span class="n">logRT</span> <span class="o">&gt;</span> <span class="nf">log</span><span class="p">(</span><span class="m">150</span><span class="p">),</span> <span class="n">logRT</span> <span class="o">&lt;</span> <span class="nf">log</span><span class="p">(</span><span class="m">2000</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#Run the Model</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">contrasts</span><span class="p">(</span><span class="n">data.filt</span><span class="o">$</span><span class="n">Condition</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">-1</span><span class="o">/</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">model.formula</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data.filt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">#Store the output</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">SampleNum[i]</span> <span class="o">&lt;-</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">p.val[i]</span> <span class="o">&lt;-</span> <span class="nf">coef</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">model</span><span class="p">))</span><span class="n">[</span><span class="p">,</span><span class="s">&#34;Pr(&gt;|t|)&#34;</span><span class="n">][</span><span class="s">&#34;Condition1&#34;</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output</span><span class="o">$</span><span class="n">effect[i]</span> <span class="o">&lt;-</span> <span class="nf">coef</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">model</span><span class="p">))</span><span class="n">[</span><span class="p">,</span><span class="s">&#34;Estimate&#34;</span><span class="n">][</span><span class="s">&#34;Condition1&#34;</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The above function runs a for loop that takes random subsets of 8 from the sample of 66 subjects, fits a regression model to that subset, and then stores the p-value and effect coefficient from the model. Let&rsquo;s do this 1000 times and then look at the resulting distribution of effect sizes. For my sake, I&rsquo;ll run it on a model without <code>Duration</code> as a fixed effect to help the function run a bit more quickly.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">resample8</span> <span class="o">&lt;-</span> <span class="nf">effect.size.extractor</span><span class="p">(</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">sims</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">sample.size</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span> <span class="n">model.formula</span> <span class="o">=</span> <span class="n">logRT</span> <span class="o">~</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span>
+</span></span><span class="line"><span class="cl">                                  <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">+</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span><span class="o">|</span><span class="n">SubjectID</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ItemID</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">resample</span><span class="o">$</span><span class="n">n</span> <span class="o">&lt;-</span> <span class="m">8</span>
+</span></span><span class="line"><span class="cl"><span class="nf">write_csv</span><span class="p">(</span><span class="n">resample</span><span class="p">,</span> <span class="s">&#34;resample8.csv&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">resample8</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#34;resample8.csv&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><p>Similar to p-value function above, I saved the output to a .csv and then reloaded the file to save myself the time it takes for the function to run when knitting this document into the website.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">resample8</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="n">effect</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_histogram</span><span class="p">(</span><span class="n">binwidth</span> <span class="o">=</span> <span class="m">.005</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">resample8</span><span class="o">$</span><span class="n">effect</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;red&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span> <span class="o">=</span> <span class="n">Change</span><span class="o">$</span><span class="n">effect[59]</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-10-1_hu519e01bdc9f811d31ae0e9ba353374d4_17780_bad8d67b87a1515a19921988a3daeca3.webp 400w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-10-1_hu519e01bdc9f811d31ae0e9ba353374d4_17780_e851e9598470bc7921ca04e85be577a4.webp 760w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-10-1_hu519e01bdc9f811d31ae0e9ba353374d4_17780_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-10-1_hu519e01bdc9f811d31ae0e9ba353374d4_17780_bad8d67b87a1515a19921988a3daeca3.webp"
+               width="672"
+               height="480"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+<!-- --></p>
+<p>The effects are centered around 0.0252309 (blue line) which is close to the actual effect of 0.0284974 from our full sample (red line). This is to be expected, as modelling a large number of small subsets effectively approximates one model with the full dataset. I expect with an infinite number of resamplings, these two would converge.  However, the effects do seem to vary considerably around this number. If I had collected my data from subjects in a different order, I could have estimated an effect size ranging from -.10 to nearly 0.15 in a pilot sample.</p>
+<p>To visualize this pilot sample variation relative to how the effect sizes varied in the full dataset, I&rsquo;ve added a rug plot of the resampled effect sizes to the y-axis of the line graph below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">Change</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">effect</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sample</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">effect</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="n">Change</span><span class="o">$</span><span class="n">effect[59]</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Cumulative Participants&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Effect of Condition&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_rug</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">resample8</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">effect</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="nf">rgb</span><span class="p">(</span><span class="m">.5</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="m">.15</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-11-1_hu23b47058365fc39d4a1522743b2bb931_35821_c78f4a4d740022d9baf5b8b5b190783b.webp 400w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-11-1_hu23b47058365fc39d4a1522743b2bb931_35821_3ab0308ae65112185b2014487ed69bb1.webp 760w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-11-1_hu23b47058365fc39d4a1522743b2bb931_35821_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-11-1_hu23b47058365fc39d4a1522743b2bb931_35821_c78f4a4d740022d9baf5b8b5b190783b.webp"
+               width="672"
+               height="480"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+<!-- --></p>
+<p>With pilot sample of only 8 participants, there seems to be a great deal of variability around the effect size. Most effect sizes are clustered near the true effect size of 0.0284974 (blue line), though it would be plausible to estimate an effect size that&rsquo;s near zero or even negative. Obtaining an effect size near or less than zero would have a large influence on the results of a power analysis. This suggests to me that a pilot sample of this size might not be large enough. Let&rsquo;s see if the effect size estimates get more accurate with larger pilot samples.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">resample12</span> <span class="o">&lt;-</span> <span class="nf">effect.size.extractor</span><span class="p">(</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">sims</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">sample.size</span> <span class="o">=</span> <span class="m">12</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="n">model.formula</span> <span class="o">=</span> <span class="n">logRT</span> <span class="o">~</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span>
+</span></span><span class="line"><span class="cl">                                   <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">+</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span><span class="o">|</span><span class="n">SubjectID</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ItemID</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">resample12</span><span class="o">$</span><span class="n">n</span> <span class="o">&lt;-</span> <span class="m">12</span>
+</span></span><span class="line"><span class="cl"><span class="nf">write_csv</span><span class="p">(</span><span class="n">resample12</span><span class="p">,</span> <span class="s">&#34;resample12.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">resample16</span> <span class="o">&lt;-</span> <span class="nf">effect.size.extractor</span><span class="p">(</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">sims</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">sample.size</span> <span class="o">=</span> <span class="m">16</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="n">model.formula</span> <span class="o">=</span> <span class="n">logRT</span> <span class="o">~</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span>
+</span></span><span class="line"><span class="cl">                                  <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">+</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span><span class="o">|</span><span class="n">SubjectID</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ItemID</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">resample16</span><span class="o">$</span><span class="n">n</span> <span class="o">&lt;-</span> <span class="m">16</span>
+</span></span><span class="line"><span class="cl"><span class="nf">write_csv</span><span class="p">(</span><span class="n">resample16</span><span class="p">,</span> <span class="s">&#34;resample16.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">resample20</span> <span class="o">&lt;-</span> <span class="nf">effect.size.extractor</span><span class="p">(</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">sims</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">sample.size</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                  <span class="n">model.formula</span> <span class="o">=</span> <span class="n">logRT</span> <span class="o">~</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span>
+</span></span><span class="line"><span class="cl">                                  <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">+</span> <span class="n">Condition</span> <span class="o">+</span> <span class="n">logTrial</span><span class="o">|</span><span class="n">SubjectID</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span><span class="o">|</span><span class="n">ItemID</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">resample20</span><span class="o">$</span><span class="n">n</span> <span class="o">&lt;-</span> <span class="m">20</span>
+</span></span><span class="line"><span class="cl"><span class="nf">write_csv</span><span class="p">(</span><span class="n">resample20</span><span class="p">,</span> <span class="s">&#34;resample20.csv&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>As before, I ran the <code>effect.size.extractor</code> and saved the output to .csv file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">resample8</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#34;resample8.csv&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">resample12</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#34;resample12.csv&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">resample16</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#34;resample16.csv&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">resample20</span> <span class="o">&lt;-</span> <span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&#34;resample20.csv&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">resample.all</span> <span class="o">&lt;-</span> <span class="nf">bind_rows</span><span class="p">(</span><span class="n">resample8</span><span class="p">,</span> <span class="n">resample12</span><span class="p">,</span> <span class="n">resample16</span><span class="p">,</span> <span class="n">resample20</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">resample.all</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">mutate</span><span class="p">(</span><span class="n">effect.mean</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">effect</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="n">effect</span><span class="p">,</span> <span class="n">group</span>  <span class="o">=</span> <span class="n">n</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_histogram</span><span class="p">(</span><span class="n">binwidth</span> <span class="o">=</span> <span class="m">.005</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_vline</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">xintercept</span> <span class="o">=</span> <span class="n">effect.mean</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;red&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span> <span class="o">=</span> <span class="n">Change</span><span class="o">$</span><span class="n">effect[59]</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_grid</span><span class="p">(</span><span class="n">n</span><span class="o">~</span><span class="n">.)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">()</span>
+</span></span></code></pre></div><p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-13-1_hu284ddf9612a18305f96d8843298cb2c8_34181_33c6483367f8bda160fd1838b8e3d62a.webp 400w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-13-1_hu284ddf9612a18305f96d8843298cb2c8_34181_e4a08159f745c56800721d1b588771b0.webp 760w,
+               /post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-13-1_hu284ddf9612a18305f96d8843298cb2c8_34181_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/post/protecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses/index_files/figure-html/unnamed-chunk-13-1_hu284ddf9612a18305f96d8843298cb2c8_34181_33c6483367f8bda160fd1838b8e3d62a.webp"
+               width="672"
+               height="480"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+<!-- --></p>
+<p>As expected, larger pilot samples do lead to more accuracy as evidenced by the narrower distributions in the larger samples. A larger pilot sample will always be more likely to provide a better estimate of the true effect size, but it&rsquo;s not clear exactly how large the pilot sample should be before it will provide an acceptable estimate.</p>
+<p>##tl;dr</p>
+<p>P-values seem to be quite variable over the course of data collection. This highlights the need for a good a priori sample size or data collection stopping rule that is independent of the p-value. Power analyses are a good way to come up with an a priori sample size. In the absence of a good estimate of effect size in the prior literature, we can use a small pilot sample to generate an estimate. The method of using a small pilot sample to estimate the true effect size might be necessary in some situations. In the absence of prior literature on an effect, a small pilot sample can be a useful estimate of effect size. If going with this approach, researchers should be careful to collect a pilot sample that is large enough to be a good ballpark estimator of the true effect size.</p>
+<p>####Unanswered Questions</p>
+<ol>
+<li>In this dataset, the p-value dipped below .05 twice. If the participants had been collected in a different order, would this have happened? Or was there something systematic that led to this?</li>
+<li>Does similar p-value dipping happen on other datasets? Could I create simulated data with the same parameters and examine whether or not the p-value might behave similiarly?
+3a. How large does the pilot sample need to be before the effect size estimate is acceptable?
+3b. In the dataset above, the effect size is very small. Does the size of the effect influence the accuracy of our effect size estimates? In other words, could we get away with a smaller pilot sample size when trying to make an estimate of a large effect size?</li>
+</ol>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpost%2Fprotecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses%2F&amp;text=Protecting&#43;against&#43;sketchy&#43;research&#43;practices%3A&#43;p-values%2C&#43;effect&#43;sizes%2C&#43;and&#43;power&#43;analyses" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fexample.com%2Fpost%2Fprotecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses%2F&amp;t=Protecting&#43;against&#43;sketchy&#43;research&#43;practices%3A&#43;p-values%2C&#43;effect&#43;sizes%2C&#43;and&#43;power&#43;analyses" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=Protecting%20against%20sketchy%20research%20practices%3A%20p-values%2C%20effect%20sizes%2C%20and%20power%20analyses&amp;body=https%3A%2F%2Fexample.com%2Fpost%2Fprotecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com%2Fpost%2Fprotecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses%2F&amp;title=Protecting&#43;against&#43;sketchy&#43;research&#43;practices%3A&#43;p-values%2C&#43;effect&#43;sizes%2C&#43;and&#43;power&#43;analyses" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Protecting&#43;against&#43;sketchy&#43;research&#43;practices%3A&#43;p-values%2C&#43;effect&#43;sizes%2C&#43;and&#43;power&#43;analyses%20https%3A%2F%2Fexample.com%2Fpost%2Fprotecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fexample.com%2Fpost%2Fprotecting-against-sketchy-research-practices-p-values-effect-sizes-and-power-analyses%2F&amp;title=Protecting&#43;against&#43;sketchy&#43;research&#43;practices%3A&#43;p-values%2C&#43;effect&#43;sizes%2C&#43;and&#43;power&#43;analyses" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://example.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu3c64bd0f98018e2d901b7c60447ac42e_1387900_270x270_fill_q75_lanczos_center.jpg" alt="Alice Bighetti 吳恩達"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://example.com/">Alice Bighetti 吳恩達</a></h5>
+      <h6 class="card-subtitle">Professor of Artificial Intelligence</h6>
+      <p class="card-text">My research interests include distributed robotics, mobile computing and programmable matter.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/GeorgeCushen" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/gcushen" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.d26509351aa0ff874abbee824e982e9b.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.e8ee06ba8371980ffde659871dd593b0.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
