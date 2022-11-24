@@ -25,7 +25,7 @@ experience:
   - title: Graduate Student Researcher
     company: University of Pittsburgh MAPLE Lab
     company_url: 'https://www.lrdc.pitt.edu/maplelab/'
-    company_logo: org-gc
+    company_logo: 
     location: Pennsylvania
     date_start: '2018-08-01'
     date_end: ''
@@ -34,7 +34,7 @@ experience:
   - title: Political Data Fellow
     company: Bluebonnet Data
     company_url: 'https://bluebonnetdata.org/'
-    company_logo: bluebonnet
+    company_logo: 
     location: remote
     date_start: '2021-02-01'
     date_end: '2021-06-01'
@@ -43,7 +43,7 @@ experience:
   - title: Research Associate
     company: University of Utah Applied Cognition Lab
     company_url: 'https://appliedcognition.psych.utah.edu/'
-    company_logo: org-x
+    company_logo: 
     location: Salt Lake City, Utah
     date_start: '2016-08-01'
     date_end: '2018-07-01'
