@@ -14,11 +14,15 @@ role: Graduate Student Researcher
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: University of Pittsburgh, Learning Research and Development Center, MAPLE Lab
-    url: https://www.stanford.edu/
+  - name: University of Pittsburgh
+    url: http://psychology.pitt.edu/
+  - name: Learning Research and Development Center
+    url: https://www.lrdc.pitt.edu/
+  - name: MAPLE Lab
+    url: https://www.lrdc.pitt.edu/maplelab/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include language comprehension, research methods, and second language acquisition.
+bio: My research interests include language comprehension, quantitative methods, and second language acquisition.
 
 # Interests to show in About widget
 interests:
@@ -31,7 +35,7 @@ education:
   courses:
     - course: PhD in Cognitive Psychology
       institution: University of Pittsburgh
-      year: Anticipated June 2024 
+      year: *anticipated June 2024* 
     - course: M.S. in Cognitive Psychology
       institution: University of Pittsburgh
       year: 2021
