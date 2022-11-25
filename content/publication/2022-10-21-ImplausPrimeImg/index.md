@@ -25,9 +25,9 @@ abstract: Many sentences are grammatically ill-formed, contain speech errors, or
 # summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
 
 links:
-- name: Custom Link
-  url: https://psyarxiv.com/e3kcm
 url_pdf: https://psyarxiv.com/e3kcm
+# - name: Custom Link
+#   url: https://psyarxiv.com/e3kcm
 # url_code: 
 # url_dataset: '#'
 # url_poster: '#'
