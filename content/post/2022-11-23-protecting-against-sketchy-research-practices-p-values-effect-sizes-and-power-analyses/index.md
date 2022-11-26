@@ -9,7 +9,6 @@ tags: []
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2022-11-23T19:05:03-05:00'
 featured: no
 image:
   caption: ''
