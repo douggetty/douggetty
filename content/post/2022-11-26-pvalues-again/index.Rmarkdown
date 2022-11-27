@@ -1,0 +1,89 @@
+---
+title: "P-values are uniformly distributed under the null"
+author: Doug Getty
+date: '2022-11-26'
+slug: pvalues-again
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-11-26T22:14:35-05:00'
+featured: no
+output:
+  html_document:
+    keep_md: yes
+draft: true
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+Simulation to show that p-values are uniformly distributed under the null
+
+-p-values provide no evidence for the null
+-p-values are a random walk from 0-1 when the true effect is null
+
+```{r}
+library(tidyverse)
+
+
+random_t <- function(n = 30, diff = 0, sd = 1) {
+  mean1 <- 0
+  mean2 <- diff
+  
+  d1 <- rnorm(n, mean1, sd)
+  d2 <- rnorm(n, mean2, sd)
+  
+  test <- t.test(d1, d2)
+  vec <- c(
+    test$statistic,
+    test$estimate[1] - test$estimate[2],
+    test$p.value
+  )
+  names(vec) <- c("t", "diff", "p")
+  return(vec)
+}
+
+
+
+reps_null <- as.data.frame(t(replicate(1000, random_t(n = 30, diff = 0, sd = 1))))
+
+reps_null %>% 
+  rowid_to_column() %>% 
+  pivot_longer(cols = c("t", "diff", "p"), names_to = "statistic", values_to = "estimate") %>% 
+  ggplot(aes(x = estimate)) +
+  geom_histogram(bins = 100) +
+  facet_grid(.~statistic, scales = "free_x")
+
+
+reps_dif <- t(replicate(1000, random_t(n = 30, diff = .5, sd = 1))) %>% as.data.frame() %>% 
+  mutate(power = sum(ifelse(p < .05, 1, 0))/n() )
+
+reps_dif %>% 
+  rowid_to_column() %>% 
+  pivot_longer(cols = c("t", "diff", "p"), names_to = "statistic", values_to = "estimate") %>% 
+  ggplot(aes(x = estimate)) +
+  geom_histogram(bins = 100) +
+  facet_grid(.~statistic, scales = "free_x")
+
+
+reps_dif2 <- t(replicate(1000, random_t(n = 30, diff = .8, sd = 1))) %>% as.data.frame() %>% 
+  mutate(power = sum(ifelse(p < .05, 1, 0))/n() )
+
+reps_dif2 %>% 
+  rowid_to_column() %>% 
+  pivot_longer(cols = c("t", "diff", "p"), names_to = "statistic", values_to = "estimate") %>% 
+  ggplot(aes(x = estimate)) +
+  geom_histogram(bins = 100) +
+  facet_grid(.~statistic, scales = "free_x")
+```
+
+
+
+
+
