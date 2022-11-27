@@ -1,0 +1,23 @@
+# Theme metadata
+name = "poptart"
+
+[light]
+  # Primary
+  primary = "#9d42a6"
+
+  # Menu
+  menu_primary = "#3CD0E6"
+  menu_text = "#34495e"
+  menu_text_active = "#2962ff"
+  menu_title = "#2b2b2b"
+
+  # Home sections
+  home_section_odd = "rgb(250, 226, 195)"
+  home_section_even = "rgb(222, 201, 173)"
+
+[dark]
+  # Primary
+  primary = "#bbdefb"
+
+  link = "#bbdefb"
+  link_hover = "#bbdefb"

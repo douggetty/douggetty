@@ -11,7 +11,7 @@
 
 <meta name="author" content="Doug Getty" />
 
-<meta name="date" content="2022-11-25" />
+<meta name="date" content="2022-11-26" />
 
 <title>A Short Tutorial on Bootstrapping Confidence Intervals</title>
 
@@ -366,7 +366,7 @@ pre code {
 <h1 class="title toc-ignore">A Short Tutorial on Bootstrapping
 Confidence Intervals</h1>
 <h4 class="author">Doug Getty</h4>
-<h4 class="date">2022-11-25</h4>
+<h4 class="date">2022-11-26</h4>
 
 </div>
 
@@ -648,6 +648,17 @@ positive), which makes sense given our data. The range for the slope is
 [-0.23,1.42], which is consistent with our model output. The
 relationship between x and y could be slightly negative, or it could be
 almost 1.5.</p>
+</div>
+<div id="final-notes" class="section level2">
+<h2>Final notes</h2>
+<p>As I mentioned earlier, bootstrapping is an extremely general
+procedure. It can be used to simulate the sampling distribution of any
+statistic you might need. This method generalizes to mixed effects or
+multilevel data as well, with the caveat that the multilevel structure
+of the data needs to be accounted for. The <code>lme4::bootMer()</code>
+provides one way to extend this to mixed effects models, and the usage
+is extremely similar to that of the <code>boot::boot()</code>
+function.</p>
 </div>
 
 

@@ -1,14 +1,14 @@
 ---
 title: "A Short Tutorial on Bootstrapping Confidence Intervals"
 author: Doug Getty
-date: '2022-11-25'
+date: '2022-11-26'
 slug: boostrap-demo
 categories: []
 tags: []
 subtitle: ''
 summary: ''
 authors: []
-draft: true
+draft: false
 featured: no
 output:
   html_document:
@@ -358,5 +358,7 @@ reg_ci_slope
 We now have 95% CIs for both the intercept and parameter. Notably, the range for the intercept is relatively large (going from negative to positive), which makes sense given our data. The range for the slope is [-0.23,1.42], which is consistent with our model output. The relationship between x and y could be slightly negative, or it could be almost 1.5. 
 
 
+## Final notes
 
+As I mentioned earlier, bootstrapping is an extremely general procedure. It can be used to simulate the sampling distribution of any statistic you might need. This method generalizes to mixed effects or multilevel data as well, with the caveat that the multilevel structure of the data needs to be accounted for. The `lme4::bootMer()` provides one way to extend this to mixed effects models, and the usage is extremely similar to that of the `boot::boot()` function.
 

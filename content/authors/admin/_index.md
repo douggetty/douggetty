@@ -14,7 +14,11 @@ role: Graduate Student Researcher
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: University of Pittsburgh, Learning Research and Development Center, MAPLE Lab
+  - name: University of Pittsburgh
+    url: http://psychology.pitt.edu/
+  - name: Learning Research and Development Center
+    url: https://www.lrdc.pitt.edu/
+  - name: MAPLE Lab
     url: https://www.lrdc.pitt.edu/maplelab/
 
 # Short bio (displayed in user profile at end of posts)

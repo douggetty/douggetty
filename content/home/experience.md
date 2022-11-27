@@ -29,7 +29,7 @@ experience:
     location: Pennsylvania
     date_start: '2018-08-01'
     date_end: ''
-    description:
+    description: Designed and conducted novel research projects in psycholinguistics across several lines of work.
 
   - title: Political Data Fellow
     company: Bluebonnet Data
@@ -51,4 +51,5 @@ experience:
 
 design:
   columns: '2'
+  
 ---

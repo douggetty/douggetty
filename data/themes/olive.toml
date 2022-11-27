@@ -1,0 +1,29 @@
+# Theme metadata
+name = "olive"
+
+# "#2B3618" olive
+# "#202611" dark olive
+# "#F5FFDC" cream/white
+# "#361832" dark purple
+# "#261123" darker purple
+
+[light]
+  # Primary dark purple
+  primary = "#61335b"
+
+  # Menu olive
+  menu_primary = "#2B3618"
+  menu_text = "#F5FFDC"
+  menu_text_active = "#F5FFDC"
+  menu_title = "#F5FFDC"
+
+  # Home sections cream
+  home_section_odd = "rgb(245, 247, 240)"
+  home_section_even = "rgb(221, 222, 217)"
+
+[dark]
+  # Primary
+  primary = "#361832"
+
+  link = "#361832"
+  link_hover = "#361832"
