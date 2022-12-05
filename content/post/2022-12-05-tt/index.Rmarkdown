@@ -2,7 +2,7 @@
 title: "Tidy Tuesday Nov 29, 2022"
 author: Doug Getty
 date: '2022-12-05'
-slug: tt
+slug: tt-fifa
 categories: []
 tags: []
 subtitle: ''
