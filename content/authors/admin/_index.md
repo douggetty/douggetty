@@ -83,6 +83,6 @@ highlight_name: true
 
 I'm currently a Graduate Student Researcher at the University of Pittsburgh. My research interests include language processing, quantitative methods, and second language acquisition. I am currently most focused on projects investigating how comprehenders obtain non-literal interpretations of language input, but I am interested in exploring whether and the ability to gain non-literal interpretations of language connects to broader phenomena such as misinformation, text (mis)comprehension, and memory.
 
-{{< icon name="download" pack="fas" >}} Download my two-page {{< staticref "uploads/Resume_Getty_11.08.2022.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my two-page {{< staticref "uploads/2023-01-29-resume-public.pdf" "newtab" >}}resumé{{< /staticref >}}.
 
 {{< icon name="download" pack="fas" >}} Or my full length {{< staticref "uploads/CV_Getty_11.23.2022.pdf" "newtab" >}}academic CV{{< /staticref >}}.
