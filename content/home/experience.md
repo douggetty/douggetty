@@ -26,10 +26,19 @@ experience:
     company: University of Pittsburgh MAPLE Lab
     company_url: 'https://www.lrdc.pitt.edu/maplelab/'
     company_logo: 
-    location: Pennsylvania
+    location: Pittsburgh, PA
     date_start: '2018-08-01'
     date_end: ''
-    description: Designed and conducted novel research projects in psycholinguistics across several lines of work.
+    description: Designed and conducted novel research projects in cognitive science across several lines of work.
+    
+  - title: Research Science Intern
+    company: Air Force Research Labs
+    company_url: 'https://www.afrl.af.mil/'
+    company_logo: 
+    location: Dayton, OH
+    date_start: '2020-06-05'
+    date_end: '2020-08-11'
+    description: Analyzed conversation data from real-world and lab tasks using NLP and statistical tools 
 
   - title: Political Data Fellow
     company: Bluebonnet Data
