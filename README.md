@@ -15,7 +15,7 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-I'm a cognitive scientist 🧠, data scientist 📈, and lover R. I created a personal website to showcase all three of these interests. The website has links to my academic research, Resume + CV, as well as blog posts that show R skills that I have been working on, statistical concepts I've been muddying through, and more. 
+I'm a cognitive scientist 🧠, data scientist 📈, and lover R. I created a personal website to showcase all three of these interests. The website has links to my academic research, Resume + CV, as well as blog posts that show R skills that I have been learning, statistical concepts I've been muddying through, and more. 
 
 Here are some resources I've found helpful to create this blog:
 
