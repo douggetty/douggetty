@@ -10,19 +10,19 @@ last_name: Getty
 superuser: true
 
 # Role/position/tagline
-role: Graduate Student Researcher
+role: Data Scientist
 
 # Organizations/Affiliations to show in About widget
-organizations:
-  - name: University of Pittsburgh
-    url: http://psychology.pitt.edu/
-  - name: Learning Research and Development Center
-    url: https://www.lrdc.pitt.edu/
-  - name: MAPLE Lab
-    url: https://www.lrdc.pitt.edu/maplelab/
+# organizations:
+#   - name: University of Pittsburgh
+#     url: http://psychology.pitt.edu/
+#   - name: Learning Research and Development Center
+#     url: https://www.lrdc.pitt.edu/
+#   - name: MAPLE Lab
+#     url: https://www.lrdc.pitt.edu/maplelab/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include language comprehension, quantitative methods, and second language acquisition.
+bio: My research interests include language comprehension, quantitative methods, and conversation.
 
 # Interests to show in About widget
 interests:
@@ -35,7 +35,7 @@ education:
   courses:
     - course: PhD in Cognitive Psychology
       institution: University of Pittsburgh
-      year: anticipated June 2024 
+      year: 2024 
     - course: M.S. in Cognitive Psychology
       institution: University of Pittsburgh
       year: 2021
@@ -53,8 +53,8 @@ social:
     link: 'mailto:doug.getty@pitt.edu'
   - icon: twitter
     icon_pack: fab
-    link: https://twitter.com/doug_getty_
-    label: Follow me on Twitter
+    link: https://bsky.app/profile/douggetty.bsky.social
+    label: Follow me on Bluesky
     display:
       header: true
   - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
@@ -65,7 +65,7 @@ social:
     link: https://github.com/douggetty
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/in/douglas-getty-9331586b/
+    link: https://www.linkedin.com/in/doug-getty-9331586b/
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
@@ -81,7 +81,7 @@ email: ''
 highlight_name: true
 ---
 
-I'm currently a Graduate Student Researcher at the University of Pittsburgh. My research interests include language processing, quantitative methods, and second language acquisition. I am currently most focused on projects investigating how comprehenders obtain non-literal interpretations of language input, but I am interested in exploring whether and the ability to gain non-literal interpretations of language connects to broader phenomena such as misinformation, text (mis)comprehension, and memory.
+I'm currently working as a Data Scientist at McGraw Hill. Before that, I was Graduate Student Researcher at the University of Pittsburgh where I trained with Dr. Scott Fraundorf. My research focused on language comprehension and conversation. I had a particular focus investigating how comprehenders obtain non-literal interpretations of noisy language input. 
 
 {{< icon name="download" pack="fas" >}} Download my two-page {{< staticref "uploads/2023-01-29-resume-public.pdf" "newtab" >}}resumé{{< /staticref >}}.
 
